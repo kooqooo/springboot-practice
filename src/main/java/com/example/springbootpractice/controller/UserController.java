@@ -18,7 +18,7 @@ public class UserController {
     public ResponseEntity<User> createUser(
             @RequestBody User user
     ) {
-        User created_user = userService.create(
+        User created_user = userService.createUser(
                 user.getUsername(),
                 user.getEmail()
         );

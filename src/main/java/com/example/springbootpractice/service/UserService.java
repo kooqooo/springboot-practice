@@ -8,11 +8,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public void create(String name, String email) {
-        userRepository.save(new User(name, email));
+    public User createUser(String username, String email) {
+        User user = new User(
+                null,
+                username,
+                email,
+                "password"
+        );
+        return userRepository.save(user);
     }
 
     public List<User> getAll() {
