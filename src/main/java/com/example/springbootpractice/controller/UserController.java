@@ -10,17 +10,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-
+@RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<String> post(
-            @RequestParam(name = "name") String name,
-            @RequestParam(name = "email") String email
+    public ResponseEntity<User> createUser(
+            @RequestBody User user
     ) {
-        userService.create(name, email);
-        return ResponseEntity.ok("saved");
+        User created_user = userService.create(
+                user.getUsername(),
+                user.getEmail()
+        );
+        return ResponseEntity.ok(created_user);
     }
 
     @GetMapping
