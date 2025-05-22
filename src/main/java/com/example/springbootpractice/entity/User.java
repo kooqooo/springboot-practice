@@ -1,26 +1,25 @@
 package com.example.springbootpractice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 
 @Entity
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter
-//@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private Integer id;
 
-    String name;
-    String email;
+    @Column(unique = true, nullable = false, length = 32)
+    private String username;
+    private String email;
 
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private String password;
+
 }
