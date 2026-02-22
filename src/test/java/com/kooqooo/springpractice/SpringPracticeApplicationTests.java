@@ -1,10 +1,10 @@
-package com.example.springbootpractice;
+package com.kooqooo.springpractice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootPracticeApplicationTests {
+class SpringPracticeApplicationTests {
 
     @Test
     void contextLoads() {
